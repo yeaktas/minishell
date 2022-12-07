@@ -21,10 +21,12 @@ typedef struct s_big_hole
 	t_token	*token;
 }	t_big_hole;
 
+//minishell.c
+
+//lexer.c
 int	ft_lexer(char *inp);
 
+//utils.c
 int	word_count(char *str);
-
-void	abo(t_big_hole *a);
 
 #endif
