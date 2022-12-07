@@ -23,7 +23,6 @@ typedef struct s_big_hole
 int	ft_lexer(char *inp);
 int	token_typing(char *str);
 
-int	if_command(char *str);
 int	word_count(char *str);
 
 #endif
