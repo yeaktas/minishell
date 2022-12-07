@@ -9,7 +9,10 @@ char	*input(char *user)
 	return (a);
 }
 
-
+void	abo(t_big_hole *a)
+{
+	a->token->type = 2;
+}
 
 int	main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, __attribute__((unused))char **env)
 {

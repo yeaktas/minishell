@@ -1,6 +1,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "libft/libft.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -11,18 +12,19 @@
 #define arg 8
 typedef struct s_token
 {
-	char	*input;
+	char	*name;
 	int		type;
 }	t_token;
 
 typedef struct s_big_hole
 {
-	t_token	token;
+	t_token	*token;
 }	t_big_hole;
 
 int	ft_lexer(char *inp);
-int	token_typing(char *str);
 
 int	word_count(char *str);
+
+void	abo(t_big_hole *a);
 
 #endif
