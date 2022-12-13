@@ -3,13 +3,15 @@
 char	*input(char *user)
 {
 	char	*a;
-
-	user = "tacikgoz % ";
-	a = readline(user);
+	char	*tmp;
+	(void)user;
+	tmp = ft_strjoin(getenv("USER"), " % ");
+	a = readline(tmp);
 	return (a);
+
 }
 
-int	main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, __attribute__((unused))char **env)
+int	main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char **env)
 {
 	char	*str;
 

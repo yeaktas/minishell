@@ -1,69 +1,68 @@
 #include "minishell.h"
 
-t_big_hole	*big_a$$;
+t_big_hole	*big_ass;
 
 void	my_print()
 {
 	int i;
 
 	i = 0;
-	printf("%s ", big_a$$->token[i].name);
+	printf("%s ", big_ass->token[i].name);
 	fflush(stdout);
 	printf("\n");
 	fflush(stdout);
 }
 
-t_token take_quote(char *inp, char c, int quote)
+char	*take_quote(char *inp, char c, int quote)
 {
-	int	i;
-	int	j;
-	t_token tmp;
+	int	(i) = quote;
+	int	(j) = 0;
+	char	*tmp;
 
-	j = 0;
-	i = quote;
 	while (inp[++i] && ++j)
 	{
 		if (inp[i] == c)
 			break;
 	}
-	tmp.name = malloc(sizeof(char) * j);
-	tmp.name[j] = '\0';
+	tmp = malloc(sizeof(char) * j);
+	tmp[j] = '\0';
 	while (quote < j--)
 	{
-		if(!(tmp.name[j] == c))
-			tmp.name[j] = inp[quote + j];
+		if(!(tmp[j] == c))
+			tmp[j] = inp[quote + j];
 	}
-	tmp.type = EMPTY;
 	return (tmp);
 }
 
-// t_token	take_space(char *inp)
-// {
-	// int 	i;
-	// int		n;
-	// t_token tmp;
-	// 
-	// i = -1;
-	// n = 0;
-	// tmp = NULL;
-// }
+char	*take_space(char *inp, int n)
+{
+	static int (i) = 0;
+	int (j) = 0;
+	char *src;
+
+	src = NULL;
+	src = malloc(sizeof(char) * (n - i) + 1);
+	while(inp[i] == ' ')
+		i++;
+	while(i < n)
+		src[j++] = inp[i++];
+	src[j] = '\0';
+	return (src);
+}
 
 int	ft_lexer(char *inp)
 {
-	int		i;
-	t_token	tmp;
+	int (i) = -1;
 
+	while (inp[++i] == ' ')
+		inp = ft_strtrim(inp, " ");
 	i = -1;
 	while (inp[++i])
 	{
-		if (inp[i] == 34 || inp[i] == 39)
-			tmp = take_quote(inp, inp[i], i);
-		printf("%d\n%s\n", tmp.type, tmp.name);
-		// if (inp[i] == ' ')
-			// take_space(inp);
-		// else if (inp[i] == '$')
-		// else if (inp[i] == '<')
-		// else if (inp[i] == '>')
+		if (inp[i] == ' ')
+			token_new(take_space(inp, i));
+		else if (inp[i] == 34 || inp[i] == 39)
+			token_new(take_quote(inp, inp[i], i));
 	}
 	return(0);
 }
