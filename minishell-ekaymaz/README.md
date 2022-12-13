@@ -1,0 +1,2 @@
+# minishell
+Geliyor gelmekte olan.
