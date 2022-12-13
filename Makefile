@@ -2,18 +2,18 @@ NAME = minishell
 LIBFT = libft
 SRCS = $(wildcard *.c)
 
-CFLAGS = -lreadline -L ~/goinfre/homebrew/opt/readline/lib -I ~/goinfre/homebrew/opt/readline/include -Wall -Werror -Wextra
+CFLAGS = -lreadline -g -L /goinfre/homebrew/opt/readline/lib -I /goinfre/homebrew/opt/readline/include -Wall -Werror -Wextra
 
 CC = gcc
 
 RM = rm -f
 
 all: $(NAME)
-
-$(NAME) :
 	make -C $(LIBFT)
 	cp libft/libft.a .
 	mv libft/libft.a $(NAME)
+
+$(NAME):
 	$(CC) $(SRCS) libft.a $(CFLAGS) -o $(NAME)
 
 clean:
@@ -21,8 +21,10 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	make fclean -C $(LIBFT)
 
-re: fclean all
+libclean: fclean
+	make clean -C $(LIBFT)
 
-.PHONY: clean re fclean all
+re: fclean $(NAME)
+
+.PHONY: clean re fclean libclean all

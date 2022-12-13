@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tacikgoz <tacikgoz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 17:57:15 by ekaymaz           #+#    #+#             */
-/*   Updated: 2022/02/17 17:24:13 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2022/12/08 12:53:25 by tacikgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ char	**ft_split(char const *s, char c)
 	while (*s)
 	{
 		if (*s == c)
-			s++;
-		else
 		{
 			j = 0;
 			while (*s != c && *s && ++j)
@@ -67,6 +65,8 @@ int main()
 	while (mystr[i])
 	{
 		printf("%s\n",mystr[i]);
+			s++;
+		else
 		i++;
 	}
 }*/
