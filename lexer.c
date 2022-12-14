@@ -1,69 +1,44 @@
 #include "minishell.h"
 
-t_big_hole	*big_a$$;
+t_big_hole	*big_ass;
 
-void	my_print()
+t_list	*lexer_token_get(char *input);
+
+t_list	*lexer(char *input)
 {
-	int i;
+	t_list	*l_token;
 
-	i = 0;
-	printf("%s ", big_a$$->token[i].name);
-	fflush(stdout);
-	printf("\n");
-	fflush(stdout);
-}
+	l_token = lexer_token_get(input);
+	return (NULL);
+} 
 
-t_token take_quote(char *inp, char c, int quote)
+t_list	*lexer_token_get(char *input)
 {
-	int	i;
-	int	j;
-	t_token tmp;
+	t_list	*l_token;
+	int (i) = -1;
 
-	j = 0;
-	i = quote;
-	while (inp[++i] && ++j)
+	while (input[++i])
 	{
-		if (inp[i] == c)
-			break;
+		if (lexer_token_pipe(input, &i, &l_token) == ERROR)
+			break ;
+		else if (lexer_token_quote(input, &i, &l_token) == ERROR)
+			break ;
+		else if (lexer_token_text(input, &i, &l_token) == ERROR)
+			break ;
+		else if (lexer_token_redir(input, &i, &l_token) == ERROR)
+			break ;
+		else if (lexer_token_bracket(input, &i, &l_token) == ERROR)
+			break ;
+		while (input[i] && ft_strchr(WHITESPACE, input[i]) != 0)
+			i++;
 	}
-	tmp.name = malloc(sizeof(char) * j);
-	tmp.name[j] = '\0';
-	while (quote < j--)
-	{
-		if(!(tmp.name[j] == c))
-			tmp.name[j] = inp[quote + j];
-	}
-	tmp.type = EMPTY;
-	return (tmp);
+	if (input[i] != '\0')
+		return (NULL);
+	return (l_token);
 }
-
-// t_token	take_space(char *inp)
-// {
-	// int 	i;
-	// int		n;
-	// t_token tmp;
-	// 
-	// i = -1;
-	// n = 0;
-	// tmp = NULL;
-// }
-
-int	ft_lexer(char *inp)
-{
-	int		i;
-	t_token	tmp;
-
-	i = -1;
-	while (inp[++i])
-	{
-		if (inp[i] == 34 || inp[i] == 39)
-			tmp = take_quote(inp, inp[i], i);
-		printf("%d\n%s\n", tmp.type, tmp.name);
-		// if (inp[i] == ' ')
-			// take_space(inp);
-		// else if (inp[i] == '$')
-		// else if (inp[i] == '<')
-		// else if (inp[i] == '>')
-	}
-	return(0);
-}
+//quote emircan
+//bracket emircan
+//redir emircan
+//text aktas
+//pipe ekaraogl
+//whitspace tacikgoz
