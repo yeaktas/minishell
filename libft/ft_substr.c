@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tacikgoz <tacikgoz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 16:35:20 by ekaymaz           #+#    #+#             */
-/*   Updated: 2022/02/17 18:22:43 by ekaymaz          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:42:46 by tacikgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+//girilen dizi starttan len e kadar yazdirilir.
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -30,8 +32,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(str, s + start, i + 1);
 	return (str);
 }
-/*int	main()
+/* 
+int main(void)
 {
-	printf("*%s*\n",ft_substr("tripouille", 3, 3));
-	printf("*%s*\n",ft_substr1("tripouille", 42, 42000000));
-}*/
+	char a[] = "giresun";
+	printf("%s", ft_substr(a, 3, 3));
+}
+*/

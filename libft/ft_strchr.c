@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekaymaz <ekaymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tacikgoz <tacikgoz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:48:53 by ekaymaz           #+#    #+#             */
-/*   Updated: 2022/02/08 09:57:04 by ekaymaz          ###   ########.tr       */
+/*   Updated: 2022/12/14 15:21:26 by tacikgoz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+//girilen karakteri dizi icinde arar.
+//ilk gectigi yeri dondurur.
 
 char	*ft_strchr(const char *s, int c)
 {

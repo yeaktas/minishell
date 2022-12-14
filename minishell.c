@@ -16,5 +16,5 @@ int	main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 	char	*str;
 
 	str = input(env[0]);
-	ft_lexer(str);
+	lexer(str);
 }

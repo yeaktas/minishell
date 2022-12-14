@@ -2,35 +2,43 @@
 
 t_big_hole	*big_ass;
 
-void	my_print()
+t_list	*lexer_token_get(char *input);
+
+t_list	*lexer(char *input)
 {
-	
-}
-int	lexer(char *inp)
+	t_list	*l_token;
+
+	l_token = lexer_token_get(input);
+	return (NULL);
+} 
+
+t_list	*lexer_token_get(char *input)
 {
 	t_list	*l_token;
 	int (i) = -1;
 
-	while (inp[++i])
+	while (input[++i])
 	{
-		if (lexer_token_pipe(inp, &i, &l_token) == ERROR)
+		if (lexer_token_pipe(input, &i, &l_token) == ERROR)
 			break ;
-		else if (lexer_token_quote(inp, &i, &l_token) == ERROR)
+		else if (lexer_token_quote(input, &i, &l_token) == ERROR)
 			break ;
-		else if (lexer_token_text(inp, &i, &l_token) == ERROR)
+		else if (lexer_token_text(input, &i, &l_token) == ERROR)
 			break ;
-		else if (lexer_token_redir(inp, &i, &l_token) == ERROR)
+		else if (lexer_token_redir(input, &i, &l_token) == ERROR)
 			break ;
-		else if (lexer_token_bracket(inp, &i, &l_token) == ERROR)
+		else if (lexer_token_bracket(input, &i, &l_token) == ERROR)
 			break ;
-		while (inp[i] && ft_strchr(WHITESPACE, inp[i]) != 0)
+		while (input[i] && ft_strchr(WHITESPACE, input[i]) != 0)
 			i++;
 	}
-	return(0);
+	if (input[i] != '\0')
+		return (NULL);
+	return (l_token);
 }
-//quote -
-//text -
-//pipe +
-//redir -
-//bracket +
-//whitspace +
+//quote emircan
+//bracket emircan
+//redir emircan
+//text aktas
+//pipe ekaraogl
+//whitspace tacikgoz
