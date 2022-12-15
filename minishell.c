@@ -15,7 +15,12 @@ int	main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 {
 	char	*str;
 
-	str = input(env[0]);
-	lexer(str);
-	
+	while(1)
+	{
+		str = input(env[0]);
+		if(str[0] == '[')
+			break;
+		lexer(str);
+	}
 }
+

@@ -14,6 +14,7 @@
 /* -------------------------------------------------------------------------- */
 /* 	CHARACTER																	*/
 /* -------------------------------------------------------------------------- */
+
 # define CHAR_PIPE '|'
 # define CHAR_AMPERSAND '&'
 # define CHAR_QOUTE '\''
@@ -156,6 +157,9 @@ int			lexer_token_text(char *str, int *i, t_list **l_token);
 //lexer2.c
 int lexer_token_pipe(char *str, int *i, t_list **l_token);
 int			lexer_token_bracket(char *str, int *i, t_list **l_token);
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+
 // static int	syntax_pipe(t_list *l_token);
 
 //lexer3.c
@@ -176,5 +180,6 @@ void		token_add_back(t_token **lst, t_token *new);
 int			print_error(char *s1, char *s2, char *s3, char *message);
 char		*strerror(int __errnum) __DARWIN_ALIAS(strerror);
 int			print_error_errno(char *s1, char *s2, char *s3);
+
 
 #endif

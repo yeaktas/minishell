@@ -1,25 +1,30 @@
 #include "minishell.h"
 
-int quote_len(char *str)
+int	quote_len(char *str)
 {
-	char quote;
-	int(i) = 0;
+	char	mark;
+	int		i;
 
-	if (str == NULL)
-		return (print_error(SHELL_NAME, NULL, NULL, strerror(ENOMEM)));
-	if (!ft_strchr(QUOTE, str[0]))
-		return (print_error(SHELL_NAME, NULL, NULL, strerror(ENOMEM)));
-	quote = str[0];
-	while (str[++i])
+	if (str == NULL || *str == '\0')
+		return (0);
+	if (ft_strchr(QUOTE, str[0]) == NULL)
+		return (0);
+	mark = str[0];
+	i = 1;
+	while (str[i])
 	{
-		if (str[i] == quote)
-			break;
+		if (str[i] == mark)
+			break ;
+		i++;
 	}
-	if (str[i] != quote)
-		return (print_error(SHELL_NAME, NULL, NULL, strerror(ENOMEM)));
+	if (str[i] != mark)
+	{
+		print_error(SHELL_NAME, ERR_SYNTAX, NULL, ERR_QUOTE);
+		return (ERROR);
+	}
 	return (i + 1);
 }
-//!!!!@@!@!#!!!!Neden i+1?????
+// !!!!@@!@!#!!!!Neden i+1?????
 // str != null
 // strchr str[0] = tirnak olacak
 // charin icine tirnak atilcak
@@ -48,7 +53,7 @@ int	other_len(char *chr) // bu fonksiyonun bir kismi sanirim bonus (yaktas)
 	return (0);
 }
 
-t_token *list_to_token(t_list *l_token)
+t_token *token_content(t_list *l_token)
 {
 	return ((t_token *)l_token->content);
 }
