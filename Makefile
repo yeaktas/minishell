@@ -75,62 +75,78 @@
 
 # re: fclean all
 
-NAME        := minishell
+##########################################################################
 
-CC          := gcc
-CFLAGS      := -Wall -Wextra -Werror -O2
+# NAME        := minishell
 
-CPPFLAGS    := -I./inc -I./lib/libft/inc
-DEPFLAGS     = -MT $@ -MMD -MP -MF $(DDIR)/$*.d
+# CC          := gcc
+# CFLAGS      := -Wall -Wextra -Werror 
 
-LDFLAGS     := /lib/libft
-LDLIBS      := -lft -lreadline
+# CPPFLAGS    := -I./inc 
 
-VPATH       := src/ src/lexer/ 
-SRCS        := minishell.c
-SRCS        += lexer.c lexer_token_get.c lexer_check.c lexer_token_text.c
+# LDFLAGS     := libft
+# LDLIBS      := -lreadline
 
-ODIR        := obj
-OBJS        := $(SRCS:%.c=$(ODIR)/%.o)
+# VPATH       := src/ src/lexer/ 
+# SRCS        := minishell.c
+# SRCS        += lexer.c lexer_token_get.c lexer_check.c lexer_token_text.c lexer_utils.c
 
-DDIR        := $(ODIR)/.deps
-DEPS        := $(SRCS:%.c=$(DDIR)/%.d)
+# ODIR        := obj
+# OBJS        := $(SRCS:%.c=$(ODIR)/%.o)
 
-# **************************************************************************** #
-#	SYSTEM SPECIFIC SETTINGS							   					   #
-# **************************************************************************** #
+# DDIR        := $(ODIR)/.deps
+# DEPS        := $(SRCS:%.c=$(DDIR)/%.d)
 
-# **************************************************************************** #
-#   RULES                                                                      #
-# **************************************************************************** #
+# # **************************************************************************** #
+# #	SYSTEM SPECIFIC SETTINGS							   					   #
+# # **************************************************************************** #
 
-.PHONY: all clean fclean re test
+# # **************************************************************************** #
+# #   RULES                                                                      #
+# # **************************************************************************** #
 
-$(NAME): libft/libft.a $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(LDLIBS)
+# .PHONY: all clean fclean re test
 
-$(ODIR)/%.o: %.c $(DDIR)/%.d | $(ODIR) $(DDIR)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(DEPFLAGS) -c $< -o $@
+# $(NAME): $(OBJS)
+# 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(LDLIBS)
 
-$(ODIR):
-	mkdir -p $@
+# $(ODIR)/%.o: %.c $(DDIR)/%.d | $(ODIR) $(DDIR)
+# 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-$(DDIR):
-	mkdir -p $@
+# $(ODIR):
+# 	mkdir -p $@
 
-%.a:
-	$(MAKE) -C $(dir $@)
+# $(DDIR):
+# 	mkdir -p $@
 
-all: $(NAME)
+# all: $(NAME)
 
+# clean:
+# 	$(MAKE) -C libft fclean
+# 	$(RM) -r $(DDIR) $(ODIR)
+
+# fclean: clean
+# 	$(RM) $(NAME)
+
+# re: fclean all
+
+##########################################################################
+
+NAME = minishell
+
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -lreadline
+MINISHELLFLAG = -L ~/goinfre/homebrew/opt/readline/lib -I ~/goinfre/homebrew/opt/readline/include/readline/
+
+FILES = $(wildcard src/*.c)
+OBJECT = ${FILES:%.c=%.o}
+# /%.c = /*.c
+
+all:
+	$(CC) $(CFLAGS) $(MINISHELLFLAG) $(FILES) 
+	mv $(OBJECT) obj
 clean:
-	$(MAKE) -C libft fclean
-	$(RM) -r $(DDIR) $(ODIR)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean:
+	$(MAKE) -C libft/fclean
 
-re: fclean all
-
-$(DEPS):
-include $(wildcard $(DEPS))
