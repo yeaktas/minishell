@@ -3,3 +3,4 @@ arkadaslar merhaba projenizi yaparken bu not defterini hep acik tutunuz yoksa be
 lexer_3_birlestirilcek olay 1 : static int	other_len(char *chr) fonksiyonuna giden her yazdigimiz fonksiyon buraya not alinacak cunku bazilari bonus icin olabilir onlari duzenleyecegiz
         90.satir    ==    other_len(&str[*i])   ==    int	lexer_token_quote(char *str, int *i, t_list **l_token)
 
+lexer.c 56 redir_mark nedir?

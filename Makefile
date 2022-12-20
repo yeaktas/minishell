@@ -136,17 +136,23 @@ NAME = minishell
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -lreadline
-MINISHELLFLAG = -L ~/goinfre/homebrew/opt/readline/lib -I ~/goinfre/homebrew/opt/readline/include/readline/
+MINISHELLFLAG = -L ~/goinfre/homebrew/opt/readline/lib -I ~/goinfre/homebrew/opt/readline/include/readline/ -g
 
-FILES = $(wildcard src/*.c)
+FILES = $(wildcard src/*.c) $(wildcard src/lexer/*.c) $(wildcard src/parser/*.c)
 OBJECT = ${FILES:%.c=%.o}
 # /%.c = /*.c
+INC = -I inc/ -I libft/
 
-all:
-	$(CC) $(CFLAGS) $(MINISHELLFLAG) $(FILES) 
-	mv $(OBJECT) obj
+all: libft
+	@$(CC) $(INC) $(CFLAGS) $(MINISHELLFLAG) $(FILES) libft/libft.a -o $(NAME)
+
+libft:
+	@$(MAKE) -C libft
+
 clean:
 
 fclean:
-	$(MAKE) -C libft/fclean
+	$(MAKE) -C libft fclean
+re: fclean all
 
+.PHONY: libft all clean fclean

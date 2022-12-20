@@ -138,12 +138,8 @@ typedef struct s_big_hole
 }			t_big_hole;
 
 
-int	other_len(char *chr);
 
-//minishell.c
-
-//ultra_mega_split.c
-
+int lexer_syntax_check(t_list *l_token);
 //lexer_utils.c
 void		c_token_destroy(void *c_token);
 t_list		*token_create(char *string, int type);
@@ -153,31 +149,24 @@ t_list	*lexer(char *input);
 int			lexer_token_text(char *str, int *i, t_list **l_token);
 
 //lexer2.c
-int lexer_token_pipe(char *str, int *i, t_list **l_token);
+int 	lexer_token_pipe(char *str, int *i, t_list **l_token);
 int			lexer_token_bracket(char *str, int *i, t_list **l_token);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
-// static int	syntax_pipe(t_list *l_token);
-
-//lexer3.c
 int	lexer_token_redir(char *str, int *i, t_list **l_token);
 t_list		*token_create(char *string, int type);
 int	lexer_token_bracket(char *str, int *i, t_list **l_token);
 t_token		*token_content(t_list *token);
-int			other_len(char *chr);
 int			lexer_token_quote(char *str, int *i, t_list **l_token);
-// static int	syntax_brackets(t_list *l_token);
-
-//utils.c
 
 //lexer_token_text
-int	lexer_token_text(char *str, int *i, t_list **l_token);
-int	lexer_token_quote(char *str, int *i, t_list **l_token);
+int		lexer_token_text(char *str, int *i, t_list **l_token);
+int		lexer_token_quote(char *str, int *i, t_list **l_token);
+int		other_len(char *chr);
 
 //print_error.c
 int			print_error(char *s1, char *s2, char *s3, char *message);
-char		*strerror(int __errnum) __DARWIN_ALIAS(strerror);
 int			print_error_errno(char *s1, char *s2, char *s3);
 
 

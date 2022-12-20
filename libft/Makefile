@@ -36,27 +36,22 @@ CC = gcc
 
 RM = rm -f
 
-all: $(NAME)
-	@ECHO "\033[0;91m\nProgram checking..."
+all: $(NAME) bonus
+	@ECHO "Program checking..."
 
 $(NAME): $(OBJS)
-	@echo "\033[0;93m"
-	ar rc $(NAME) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 
 bonus: $(BONUS_OBJS) $(OBJS)
-	ar rc $(NAME) $(BONUS_OBJS) $(OBJS)
+	@ar rc $(NAME) $(BONUS_OBJS) $(OBJS)
 
 clean:
-	@echo "$(GREEN)Loading..."
+	@echo "Loading..."
 	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) ../libft.a
+	$(RM) libft.a
 
 re:		fclean all
 
 .PHONY: clean re fclean all
-
-
-
-
