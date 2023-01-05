@@ -12,7 +12,7 @@
 
 NAME = minishell
 
-CFLAGS = $(INCLUDE) -Wall -Werror -Wextra
+CFLAGS = $(INCLUDE) -Wall -Werror -Wextra -g
 INCLUDE = -IInclude/ -I/Users/yaktas/goinfre/homebrew/Cellar/readline/8.2.1/include
 CC = gcc
 
