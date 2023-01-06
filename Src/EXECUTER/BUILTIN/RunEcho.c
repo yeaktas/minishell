@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RunEcho.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aozsayar <aozsayar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 05:41:52 by aozsayar          #+#    #+#             */
-/*   Updated: 2022/12/28 05:41:52 by aozsayar         ###   ########.fr       */
+/*   Created: 2023/01/07 01:27:53 by yaktas            #+#    #+#             */
+/*   Updated: 2023/01/07 01:27:53 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	run_echo(t_cmdlist *cmd_node)
 
 	is_n = 0;
 	path = &cmd_node->path[1];
-	if (*path && str_compare(*path, "-n"))
+	while (*path && str_compare(*path, "-n"))
 	{
 		is_n = 1;
 		path++;
