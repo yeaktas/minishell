@@ -1,7 +1,7 @@
+USERNAME=yaktas
 NAME = minishell
-
 CFLAGS = $(INCLUDE) -Wall -Werror -Wextra -g
-INCLUDE = -IInclude/ -I/Users/yaktas/goinfre/homebrew/Cellar/readline/8.2.1/include
+INCLUDE = -IInclude/ -I/Users/$(USERNAME)/goinfre/homebrew/Cellar/readline/8.2.1/include
 CC = gcc
 
 SRC = $(shell find src -name "*.c")
@@ -19,7 +19,7 @@ all: outfolder $(NAME)
 	@echo "Done"
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -lreadline -L /Users/yaktas/goinfre/homebrew/Cellar/readline/8.2.1/lib -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -lreadline -L /Users/$(USERNAME)/goinfre/homebrew/Cellar/readline/8.2.1/lib -o $(NAME)
 
 outfolder:
 	@echo "Building Minishell"
